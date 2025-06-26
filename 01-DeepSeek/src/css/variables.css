@@ -1,0 +1,38 @@
+:root {
+  /* INDEX - Colores principales */
+  --color-primario: #4179fe;
+  --color-secundario: #202020;
+  --color-fondo: #fcfeff;
+  --color-texto: #979797;
+
+  /*CHAT - colores principales*/
+  --color-primario--chat: #4179fe;
+  --color-secundario--chat: #fff;
+  --color-fondo--chat: #292A2D;
+  --color-fondoNavBar--chat: #212327;
+  --color-fondoPreguntas--chat: #414447;
+  
+  --color-texto--chat: #fff;
+  
+  /* Colores adicionales */
+  /*--color-bold: #00c257;*/
+  --color-sombra: rgba(0, 0, 0, 0.1);
+
+
+
+}
+
+
+/* ==========================================================================
+   THEMES
+   ========================================================================== */
+
+/* Dark theme 
+
+.theme--dark {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-light);
+}
+
+
+  */
