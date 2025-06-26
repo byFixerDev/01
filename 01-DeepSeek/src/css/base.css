@@ -1,0 +1,15 @@
+
+.html {
+    font-size: 16px;
+    line-height: 1.6rem;
+}
+.body {
+  color: var(--color-texto);
+  font-family: Arial, Helvetica, sans-serif; 
+  /*
+    background-color: var(--color-fondo--chat);
+    */
+  
+}
+
+
