@@ -12,3 +12,11 @@ Esta es una herramienta web sencilla y práctica diseñada para artistas y creat
 - Fácil de usar: Interfaz intuitiva para una gestión rápida de tus referencias.
 
 Ideal para mantener tus imágenes de inspiración siempre a mano mientras trabajas en tus proyectos.
+
+## Futuras mejoras
+- Almacenar todas las url
+- Convertir urls en links _blank
+- En modo escritorio dar a las imágenes un tamaño fijo y hacer el contenedor flexible
+- Mejor diseño de app
+- Icono
+- Head completo
