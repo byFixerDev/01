@@ -10,13 +10,23 @@
 
   text-align: center;
   justify-content: space-between;
+  position: fixed;
+  left: 50px;
+  height: 100vh;
+  width: 5rem;
+  
+  
+  
 }
 
 .logo--chat {
-  width: 60px;
+  width: 55px;
   padding: 1rem;
   filter: brightness(0) invert(1);
   cursor: pointer;
+}
+.active {
+  left: 0;
 }
 .container--chat {
   text-align: center;
