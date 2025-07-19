@@ -1,0 +1,173 @@
+<!--
+    Haz una solicitud a la misma API pública y muestra el resultado.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <style>
+        * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box; 
+        }
+        html {
+            font-size: 16px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .container{
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;            
+            justify-content: space-around;         
+            
+            max-width: 1000px;
+            
+            margin: 0 auto;
+        }
+        .card{
+            padding: 0.5rem;
+            border-radius: 20px;
+            width: 10rem;
+            /*
+                eje Xpx 
+                eje Ypx  
+                OPACIDAD DE SOMBRApx
+                CANTIDAD DE SOMBRApx
+                color
+            */
+            box-shadow:0 0 10px 1px #000; 
+        }
+        .card__img{
+            width: 100%;
+        }
+        .card__tipos{
+            display: flex;
+            
+            justify-content: space-around;
+        }
+        .card__medidas{
+            display: flex;
+            
+            justify-content: space-around;
+            
+        }
+        .card__datos{
+            display: flex;
+            
+            justify-content: space-around;
+            
+        }
+    </style>
+</head>
+<body class="body">
+    <p>Cargando ...</p>
+    <div class="container">
+        <div class="card">
+            <img class="card__img" src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/025.png" alt="pkm img">
+            <div class="card__datos">
+                <p id="orden">#001</p>
+                <p id="nombre">Pikachu</p>
+            </div>
+            <div class="card__tipos">
+                <p id="tipoPrimario">Electrico</p>
+                <p id="tipoSecundario">Fantasma</p>
+            </div>
+            <div class="card__medidas">
+                <p id="peso">5kg</p>
+                <p id="altura">1m</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <img class="card__img" src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/025.png" alt="pkm img">
+            <div class="card__datos">
+                <p id="orden">#001</p>
+                <p id="nombre">Pikachu</p>
+            </div>
+            <div class="card__tipos">
+                <p id="tipoPrimario">Electrico</p>
+                <p id="tipoSecundario">Fantasma</p>
+            </div>
+            <div class="card__medidas">
+                <p id="peso">5kg</p>
+                <p id="altura">1m</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card__img" src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/025.png" alt="pkm img">
+            <div class="card__datos">
+                <p id="orden">#001</p>
+                <p id="nombre">Pikachu</p>
+            </div>
+            <div class="card__tipos">
+                <p id="tipoPrimario">Electrico</p>
+                <p id="tipoSecundario">Fantasma</p>
+            </div>
+            <div class="card__medidas">
+                <p id="peso">5kg</p>
+                <p id="altura">1m</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card__img" src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/025.png" alt="pkm img">
+            <div class="card__datos">
+                <p id="orden">#001</p>
+                <p id="nombre">Pikachu</p>
+            </div>
+            <div class="card__tipos">
+                <p id="tipoPrimario">Electrico</p>
+                <p id="tipoSecundario">Fantasma</p>
+            </div>
+            <div class="card__medidas">
+                <p id="peso">5kg</p>
+                <p id="altura">1m</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        //salida por pantalla > función 
+        //Base: URL > RESPONSE > DATA
+        //salida: return de la función
+        //verificar response.ok
+        //alerta sobre errores
+        //ejecutar función
+        const P = document.querySelector('p');
+        //función
+        async function obtenerPost(){
+
+            try{
+                //retrasar respuesta unos segundos
+                //await new Promise(resolve => setTimeout(resolve, 2000));
+                //selección URL 
+                const URL = 'https://pokeapi.co/api/v2/pokemon';
+                //almaceno resultado de la petición
+                const RESPONSE = await fetch(URL);
+                //control
+                    if(!RESPONSE.ok){
+                        throw new Error(`Error en la solicitud: ${RESPONSE.status}`);
+                    } 
+                //Almaceno la petición en formato .json()                   
+                const DATA = await RESPONSE.json();
+
+                //salida
+                P.textContent = DATA;
+                
+            }catch(error){
+                //aviso de errores
+                P.textContent = "Ha ocurrido un error: ", error;
+            }
+            
+        }
+        //ejecutar función
+       obtenerPost();
+
+    </script>
+    
+</body>
+</html>
