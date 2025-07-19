@@ -8,74 +8,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html {
-        font-size: 16px;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-
-      .container {
-        padding: 2rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        justify-content: space-around;
-
-        max-width: 1000px;
-
-        margin: 0 auto;
-      }
-      .card {
-        padding: 0.5rem;
-        border-radius: 20px;
-        width: 10rem;
-        /*
-                eje Xpx 
-                eje Ypx  
-                OPACIDAD DE SOMBRApx
-                CANTIDAD DE SOMBRApx
-                color
-            */
-        box-shadow: 0 0 10px 1px #000;
-      }
-      .card__img {
-        width: 100%;
-      }
-      .card__tipos {
-        display: flex;
-
-        justify-content: space-around;
-      }
-      .card__medidas {
-        display: flex;
-
-        justify-content: space-around;
-      }
-      .card__datos {
-        display: flex;
-
-        justify-content: space-around;
-      }
-    </style>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./unPkm.js" defer></script>
+    <script src="./muchosPkms.js" defer></script>
+    
   </head>
   <body class="body">
-    <button>Cargar</button>
+
+    <button id="btn-bulbasaur">Cargar Bulbasur</button>
+    <button id="btn-todos">Cargar Todos</button>
+    
     <p></p>
     <div class="container" id="container">
         <!--gif-->
       <div id="loading-spinner" style="display: none">
-        <img src="./loader.gif" alt="Cargando..." />
+        <img src="./loader.gif" alt="loader gif" />
       </div>
-      <!--
+      
         <div class="card">
             <img class="card__img" src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/025.png" alt="pkm img">
             <div class="card__datos">
-                <p id="orden">#001</p>
+                <p id="orden">#025</p>
                 <p id="nombre">Pikachu</p>
             </div>
             <div class="card__tipos">
@@ -87,150 +40,10 @@
                 <p id="altura">1m</p>
             </div>
         </div>
-    --></div>
-    <!--CARGAR UN POKEMON-->
-    <script>
-        const BTN = document.querySelector('button');
-      BTN.addEventListener('click', function cargar(){
-        //salida por pantalla > función
-      //Base: URL > RESPONSE > DATA
-      //salida: return de la función
-      //verificar response.ok
-      //alerta sobre errores
-      //ejecutar función
-      const P = document.querySelector("p");
-      const DIV_CONTAINER = document.getElementById("container");
-      //P.textContent = "Cargando...";
-      const SPINNER = document.getElementById('loading-spinner')
-      //función
-      
-      async function obtenerPost() {
-        try {
-            // Muestra el spinner al inicio de la carga
-            SPINNER.style.display = 'block';
-          //retrasar respuesta unos segundos
-          await new Promise((resolve) => setTimeout(resolve, 2000));
-          //selección URL
-            
-          const URL = `https://pokeapi.co/api/v2/pokemon/1`;
-
-          //almaceno resultado de la petición *** CUANDO NO USE FOR
-          const RESPONSE = await fetch(URL);
-
-          //control
-          if (!RESPONSE.ok) {
-            throw new Error(`Error en la solicitud: ${RESPONSE.status}`);
-          }
-          //Almaceno la petición en formato .json()
-          const DATA = await RESPONSE.json();
-
-          //salida
-
-          //P.textContent = `Cargado... ${DATA.name}`;
-          mostrarPokemon(DATA);
-        } catch (error) {
-            SPINNER.style.display = 'none';
-          //aviso de errores
-          P.textContent = `Ha ocurrido un error: ${error}`;
-        }
-      }
-      //ejecutar función
-
-      function mostrarPokemon(DATA) {
-        DIV_CONTAINER.innerHTML = `
-                <div class="card">
-                <img class="card__img" src="${DATA.sprites.other["official-artwork"].front_default}" alt="${DATA.name}">
-                <div class="card__datos">
-                    <p id="orden">#${DATA.id}</p>
-                    <p id="nombre">${DATA.name}</p>
-                </div>
-                <div class="card__tipos">
-                    <p id="tipoPrimario">${DATA.tipoPrimario}</p>
-                    <p id="tipoSecundario">${DATA.tipoSecundario}</p>
-                </div>
-                <div class="card__medidas">
-                    <p id="peso">${DATA.height} Kg</p>
-                    <p id="altura">${DATA.weight} M</p>
-                </div>
-            </div>
-        `;
-      }
-      obtenerPost();
     
-      
-      
-      });
-      
-    </script>
-    <!--CARGAR TODOS LOS POKEMONS-->
-    <!--
-    <script>
-    const contenedor = document.getElementById('container');
-    const mensajeCarga = document.querySelector('p');
-
-    async function obtenerPokemons() {
-        try {
-            // Muestra "Cargando..."
-            mensajeCarga.textContent = 'Cargando...';
-
-            const promesas = [];
-            for(let i = 1; i <= 102; i++){
-                const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-                promesas.push(fetch(url));
-            }
-            
-            const respuestas = await Promise.all(promesas);
-
-            // Verificamos que todas las respuestas sean correctas
-            for (const respuesta of respuestas) {
-                if (!respuesta.ok) {
-                    throw new Error(`Error en la solicitud: ${respuesta.status}`);
-                }
-            }
-
-            const datos = await Promise.all(respuestas.map(res => res.json()));
-
-            // Limpiamos el mensaje de carga y el contenedor
-            mensajeCarga.textContent = '';
-            contenedor.innerHTML = '';
-            
-            datos.forEach(pokemonData => {
-                mostrarPokemon(pokemonData);
-            });
-            
-        } catch(error) {
-            console.error('Ha ocurrido un error:', error);
-            mensajeCarga.textContent = `Error: ${error.message}`;
-            contenedor.innerHTML = '';
-        }
-    }
+    </div>
+   
     
-    function mostrarPokemon(data) {
-        const tipoPrimario = data.types[0]?.type.name || 'N/A';
-        const tipoSecundario = data.types[1]?.type.name || 'N/A';
-        
-        const tarjetaHTML = `
-            <div class="card">
-                <img class="card__img" src="${data.sprites.other['official-artwork'].front_default}" alt="${data.name} image">
-                <div class="card__datos">
-                    <p>#${data.id.toString().padStart(3, '0')}</p>
-                    <p>${data.name}</p>
-                </div>
-                <div class="card__tipos">
-                    <p>${tipoPrimario}</p>
-                    <p>${tipoSecundario}</p>
-                </div>
-                <div class="card__medidas">
-                    <p>${data.weight / 10} kg</p>
-                    <p>${data.height / 10} m</p>
-                </div>
-            </div>
-        `;
-        contenedor.innerHTML += tarjetaHTML;
-    }
-    
-    obtenerPokemons();
-</script>
--->
+
   </body>
 </html>
