@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+
+    <style>
+
+    </style>
+    
+</head>
+<body>
+    <p id="nombre">HOLA</p>
+    
+    <script>
+        const NOMBRE = document.getElementById('nombre');
+        async function obtenerPokemons() {
+            const URL = 'https://pokeapi.co/api/v2/pokemon/1';
+            const RESPONSE = await fetch(URL);
+            const DATA = await RESPONSE.json();
+            NOMBRE.textContent = DATA.name;
+            
+        }
+        obtenerPokemons(1);
+    </script>
+</body>
+</html>
