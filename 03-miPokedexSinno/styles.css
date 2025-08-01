@@ -1,0 +1,217 @@
+/* Importar fuentes pixeladas de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+/* Paleta de colores y estilos de la vieja escuela */
+:root {
+    --retro-purple: #2a0a4c;
+    --neon-blue: #00ffff;
+    --neon-pink: #ff00ff;
+    --neon-green: #00ff00;
+    --text-color: #fff;
+    --border-color: #5d429a;
+}
+
+body {
+    font-family: 'VT323', monospace;
+    background: var(--retro-purple);
+    color: var(--neon-blue);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    line-height: 1.5;
+    /* Efecto de ruido de pantalla o scanlines */
+    background-image: linear-gradient(rgba(0,0,0,.3) 1px, transparent 1px);
+    background-size: 100% 2px;
+}
+
+header {
+    background-color: #000;
+    color: var(--neon-pink);
+    padding: 2.5rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 15px var(--neon-pink);
+    border-bottom: 5px solid var(--neon-pink);
+}
+
+header h1 {
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+}
+
+main {
+    max-width: 1300px;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+button {
+    font-family: 'Press Start 2P', cursive;
+    padding: 1rem 2rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border: 3px solid var(--neon-blue);
+    border-radius: 0;
+    background-color: var(--retro-purple);
+    color: var(--neon-blue);
+    transition: all 0.1s linear;
+    text-shadow: 0 0 5px var(--neon-blue);
+    box-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue) inset;
+}
+
+button:hover {
+    background-color: var(--neon-blue);
+    color: var(--retro-purple);
+    text-shadow: none;
+    box-shadow: 0 0 15px var(--neon-blue), 0 0 30px var(--neon-blue) inset;
+    transform: translateY(-2px);
+}
+
+#status-message {
+    color: var(--neon-green);
+    min-height: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    text-shadow: 0 0 5px var(--neon-green);
+}
+
+#user-data__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    padding: 2rem;
+    border: 3px solid var(--neon-blue);
+    box-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+    margin: 2rem auto;
+    max-width: 500px;
+    gap: 2rem;
+}
+
+#user-data__container img {
+    width: 120px;
+    height: 120px;
+    border-radius: 0; /* Bordes afilados */
+    border: 3px solid var(--neon-pink);
+    box-shadow: 0 0 5px var(--neon-pink);
+}
+
+#user-data__container div {
+    text-align: left;
+}
+
+#user-data__container h1 {
+    font-family: 'Press Start 2P', cursive;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    color: var(--neon-pink);
+    text-shadow: 0 0 5px var(--neon-pink);
+}
+
+#user-data__container p {
+    margin: 0.2rem 0;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+#card__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.pokemon-card {
+    background: #000;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 0 8px var(--border-color);
+    padding: 1.2rem;
+    width: 200px;
+    text-align: center;
+    transition: all 0.2s linear;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pokemon-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--neon-blue), 0 0 30px var(--neon-blue);
+    border-color: var(--neon-blue);
+}
+
+.pokemon-card h2, .pokemon-card h3 {
+    font-family: 'Press Start 2P', cursive;
+    text-transform: capitalize;
+    margin-top: 0;
+    border-bottom: 2px solid var(--neon-blue);
+    padding-bottom: 0.5rem;
+    font-size: 1rem;
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px var(--neon-blue);
+}
+
+.pokemon-card img {
+    image-rendering: pixelated; /* Mantiene la nitidez de los píxeles */
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0.5rem auto;
+    filter: drop-shadow(0 0 8px var(--neon-green));
+}
+
+.pokemon-card p {
+    margin: 0.4rem 0;
+    font-size: 1rem;
+}
+
+.pokemon-card strong {
+    color: var(--neon-pink);
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background: var(--neon-pink);
+    width: 80%;
+    margin: 0.8rem 0;
+}
+
+/* Estilos para la tarjeta de coincidencias */
+.combined-card {
+    border: 3px solid var(--neon-green);
+    box-shadow: 0 0 15px var(--neon-green), 0 0 30px var(--neon-green);
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+
+    button {
+        width: 80%;
+    }
+
+    #user-data__container {
+        flex-direction: column;
+        text-align: center;
+        max-width: 90%;
+    }
+
+    .pokemon-card {
+        width: 100%;
+        max-width: 250px;
+    }
+}
